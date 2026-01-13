@@ -1,61 +1,51 @@
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import React, { useEffect, useState } from 'react';
 
 interface LoaderProps {
-  onComplete: () => void;
+  onComplete?: () => void;
 }
 
-export const Loader: React.FC<LoaderProps> = ({ onComplete }) => {
-  const loaderRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
-  const barRef = useRef<HTMLDivElement>(null);
+const Loader: React.FC<LoaderProps> = ({ onComplete }) => {
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        onComplete: () => {
-          if (loaderRef.current) {
-            loaderRef.current.style.display = 'none';
-          }
-          onComplete();
-        }
-      });
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+      if (onComplete) {
+        onComplete();
+      }
+    }, 2000);
 
-      tl.to(barRef.current, {
-        width: '100%',
-        duration: 1.5,
-        ease: 'power2.inOut'
-      })
-      .to(textRef.current, {
-        y: -50,
-        opacity: 0,
-        duration: 0.5
-      })
-      .to(loaderRef.current, {
-        yPercent: -100,
-        duration: 1,
-        ease: 'power4.inOut'
-      });
-    }, loaderRef);
-
-    return () => ctx.revert();
+    return () => clearTimeout(timer);
   }, [onComplete]);
 
+  if (!isLoading) {
+    return null;
+  }
+
   return (
-    <div 
-      ref={loaderRef}
-      className="fixed inset-0 bg-black z-[10000] flex justify-center items-center text-white overflow-hidden px-6"
-    >
-      <div 
-        ref={textRef}
-        className="font-display text-[8vw] md:text-[5vw] font-bold tracking-tighter text-center max-w-[90vw] leading-tight"
-      >
-        PLANTACJA CHOINEK SOLDANY
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-slate-900 to-slate-800">
+      <div className="relative w-24 h-24">
+        {/* Outer rotating ring */}
+        <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-blue-500 border-r-blue-500 animate-spin"></div>
+
+        {/* Middle rotating ring */}
+        <div className="absolute inset-2 rounded-full border-4 border-transparent border-b-green-500 border-l-green-500 animate-spin" style={{ animationDirection: 'reverse', animationDuration: '1.5s' }}></div>
+
+        {/* Inner pulsing circle */}
+        <div className="absolute inset-4 rounded-full bg-gradient-to-r from-blue-500 to-green-500 animate-pulse"></div>
+
+        {/* Center dot */}
+        <div className="absolute inset-6 rounded-full bg-white shadow-lg"></div>
       </div>
-      <div 
-        ref={barRef}
-        className="absolute bottom-0 left-0 h-1 bg-white w-0"
-      />
+
+      {/* Loading text */}
+      <div className="absolute bottom-24">
+        <p className="text-white text-lg font-semibold tracking-widest animate-pulse">
+          LOADING
+        </p>
+      </div>
     </div>
   );
 };
+
+export default Loader;
