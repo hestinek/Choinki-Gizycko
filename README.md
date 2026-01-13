@@ -1,20 +1,92 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Choinki Giżycko - Plantacja Choinek Soldany
 
-# Run and deploy your AI Studio app
+Oficjalna strona internetowa plantacji choinek w Giżycku.
 
-This contains everything you need to run your app locally.
+## 🎄 O Projekcie
 
-View your app in AI Studio: https://ai.studio/apps/drive/1ZmWYY0BA-cEdPZLjctNBOwUioTDD8coe
+Choinki Giżycko to nowoczesna landing page dla Plantacji Choinek Soldany.  Strona prezentuje ofertę: 
+- Świerki pospolite (Picea Abies)
+- Świerki srebrne (Picea Pungens)
+- Choinki w donicy
 
-## Run Locally
+## 🚀 Stack Technologiczny
 
-**Prerequisites:**  Node.js
+- **React 18** - UI framework
+- **TypeScript** - Type safety
+- **Vite** - Build tool
+- **Tailwind CSS** - Styling
+- **GSAP** - Animations
+- **Lenis** - Smooth scroll
 
+## 📦 Instalacja
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```bash
+npm install
+```
+
+## 🏃 Uruchomienie
+
+```bash
+npm run dev
+```
+
+Server uruchomi się na `http://localhost:3000`
+
+## 🏗️ Build
+
+```bash
+npm run build
+```
+
+Wygenerowana aplikacja będzie w folderze `dist/`
+
+## 📁 Struktura Projektu
+
+```
+.
+├── components/          # Komponenty React
+│   ├── Navbar.tsx
+│   ├── Hero.tsx
+│   ├── Gallery.tsx
+│   ├── Location.tsx
+│   └── ... 
+├── public/             # Statyczne assety
+├── index.html          # Entry point HTML
+├── index.tsx           # React entry point
+├── App.tsx             # Main component
+├── vite.config. ts      # Vite configuration
+└── tsconfig.json       # TypeScript configuration
+```
+
+## 🎨 Personalizacja
+
+- Kolory: Tailwind config w `index.html`
+- Fonty: Google Fonts (Manrope, Syncopate)
+- Obrazy: Supabase Storage
+
+## 📱 Responsywność
+
+Strona w pełni responsywna: 
+- ✅ Desktop (1920px+)
+- ✅ Tablet (768px - 1024px)
+- ✅ Mobile (320px - 767px)
+
+## 🔒 SEO
+
+- ✅ robots.txt
+- ✅ sitemap.xml
+- ✅ site.webmanifest
+- ✅ Open Graph tags
+- ✅ Favicons
+
+## 👨‍💻 Autor
+
+Hestinek
+
+## 📄 Licencja
+
+MIT
+
+---
+
+**Ostatnia aktualizacja:** 13.01.2026
