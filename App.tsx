@@ -30,7 +30,7 @@ const App: React.FC = () => {
       direction: 'vertical',
       smooth: true,
       smoothTouch: false,
-    } as any);
+    } as Parameters<typeof Lenis>[0]);
 
     // Synchronize Lenis with GSAP ScrollTrigger
     lenis.on('scroll', ScrollTrigger.update);
