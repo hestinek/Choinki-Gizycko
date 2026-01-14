@@ -48,4 +48,4 @@ const Loader: React.FC<LoaderProps> = ({ onComplete }) => {
   );
 };
 
-export default Loader;
+export { Loader };
